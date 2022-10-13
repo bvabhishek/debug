@@ -85,4 +85,4 @@ def import_findings_security_hub(json_file):
 
 
 
-import_findings_security_hub("zap_report.json")
+import_findings_security_hub("/zap_results/VulFlask_parametrized_zap_scan.json")
