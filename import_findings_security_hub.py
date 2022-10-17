@@ -3,6 +3,7 @@ import json
 import logging
 from datetime import datetime, timezone
 import codecs
+import boto3
 
 FINDING_TITLE = "CodeAnalysis"
 account_id = "449630918120"
