@@ -108,14 +108,14 @@ class VulFlask(object):
 
 def context_zap_results():
     try:
-        context_id = zap_handler.zap_define_context("VulFlask_context","http://34.218.205.138:5000")
+        context_id = zap_handler.zap_define_context("VulFlask_context","http://35.92.111.14:5000")
     except Exception as e:
         print(e)
 
 def run_zap_active_scan():
     try:
         s = RoboZapImportScanPolicy('127.0.0.1:8090','8090')
-        scanId = zap_handler.zap_start_ascan(context_id,'http://34.218.205.138:5000','Default Policy')
+        scanId = zap_handler.zap_start_ascan(context_id,'http://35.92.111.14:5000','Default Policy')
         print('Start Active scan. Scan ID equals ' + scanId)
         while (int(s.get_scan_status(scanId)) < 100):
             print('Active Scan progress: ' + s.get_scan_status(scanId) + '%')
