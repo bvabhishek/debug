@@ -57,7 +57,7 @@ email = "abhishek@email.com"
 password = "Test@1234"
 
 class VulFlask(object):
-    def __init__(self, proxy_host = 'localhost', proxy_port = '8090', target = 'http://35.92.111.14/:5000'):
+    def __init__(self, proxy_host = 'localhost', proxy_port = '8090', target = 'http://35.92.111.14:5000'):
         self.proxy_host = proxy_host
         self.proxy_port = proxy_port
         self.target = target
@@ -74,7 +74,7 @@ class VulFlask(object):
             time.sleep(20)
             print('[+] ' + driver.current_url)
             try:
-                driver.get('http://35.92.111.14/:5000')
+                driver.get('http://35.92.111.14:5000')
                 driver.implicitly_wait(20)
                 time.sleep(5)
                 driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[1]/input").clear()
@@ -93,10 +93,10 @@ class VulFlask(object):
                 driver.implicitly_wait(20)
                 time.sleep(5)
                 print("Login successfull")
-                driver.get("http://34.218.205.138:5000/home")
+                driver.get("http://35.92.111.14:5000/home")
                 driver.implicitly_wait(20)
                 time.sleep(5)
-                driver.get("http://34.218.205.138:5000/customer")
+                driver.get("http://35.92.111.14:5000/customer")
                 driver.implicitly_wait(20)
                 time.sleep(5)
             except BaseException as e:
