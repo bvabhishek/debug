@@ -35,7 +35,7 @@ def import_findings_security_hub(json_file):
                 normalized_severity = 70
             elif risk_desc == 'Medium':
                 normalized_severity = 60
-            elif risk_desc == 'Low' or riskletters == 'Inf':  
+            elif risk_desc == 'Low' or risk_desc == 'Info':  
                 normalized_severity = 30
             else:
                 normalized_severity = 90
