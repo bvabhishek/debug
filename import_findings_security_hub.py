@@ -1,8 +1,9 @@
 import os
 import json
 import logging
-from datetime import datetime, timezone
 import codecs
+import datetime
+import pytz
 
 FINDING_TITLE = "CodeAnalysis"
 account_id = "449630918120"
@@ -18,7 +19,7 @@ generator_id = "{0}-{1}-{2}".format(report_type.lower(),source_repository,source
 finding_type = "OWASP-Zap code scan"
 report_type = "OWASPZap"
 BEST_PRACTICES_OWASP = "https://owasp.org/www-project-top-ten/"
-created_at = datetime.now(timezone.utc).isoformat()
+created_at = datetime.datetime.now(pytz.utc)
 
 zap_aws_sechub_data = []
 
