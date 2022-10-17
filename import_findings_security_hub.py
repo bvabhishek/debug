@@ -31,12 +31,11 @@ def import_findings_security_hub(json_file):
         alertno = 1
         for alert in alerts:
             risk_desc = alert['Alerts']['AlertItem']['RiskDesc']
-            riskletters = risk_desc[0:3]
-            if riskletters == 'Hig':
+            if risk_desc == 'High':
                 normalized_severity = 70
-            elif riskletters == 'Med':
+            elif risk_desc == 'Medium':
                 normalized_severity = 60
-            elif riskletters == 'Low' or riskletters == 'Inf':  
+            elif risk_desc == 'Low' or riskletters == 'Inf':  
                 normalized_severity = 30
             else:
                 normalized_severity = 90
