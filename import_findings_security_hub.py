@@ -81,8 +81,8 @@ def import_findings_security_hub(json_file):
             zap_aws_sechub_data.append(int_data)
             alertno = alertno + 1
 
-    print(zap_aws_sechub_data)
-
-
+    #print(zap_aws_sechub_data)
+    with open('/zap_results/zap_aws_sechub_data.json', 'w') as zap_aws_sechub_data:
+        json.dump(vuls,fp)
 
 import_findings_security_hub("/zap_results/VulFlask_parametrized_zap_scan.json")
