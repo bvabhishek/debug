@@ -134,7 +134,6 @@ def import_findings_security_hub(json_file):
                         zap_aws_sechub_data.append(int_data)
             alertno = alertno + 1
 
-    print(zap_aws_sechub_data)
     with open('/zap_results/zap_aws_sechub_data.json', 'w') as fp:
         json.dump(zap_aws_sechub_data,fp)
 
