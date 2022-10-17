@@ -96,7 +96,7 @@ def import_findings_security_hub(json_file):
                         Title = alert['Alerts']['AlertItem'][item]['Alert']
                         CWEID = alert['Alerts']['AlertItem'][item]['CWEID'] or 0
 
-                        finding_id = f"{alertno}{report_type.lower()}"
+                        finding_id = "{0}{1}".format(alertno,report_type.lower())
                     
                         int_data = {
                             "SchemaVersion": "2018-10-08",
