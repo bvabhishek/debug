@@ -57,7 +57,7 @@ email = "abhishek@email.com"
 password = "Test@1234"
 
 class VulFlask(object):
-    def __init__(self, proxy_host = 'localhost', proxy_port = '8090', target = 'http://35.92.111.14:5000'):
+    def __init__(self, proxy_host = 'localhost', proxy_port = '8090', target = sys.argv[1]):
         self.proxy_host = proxy_host
         self.proxy_port = proxy_port
         self.target = target
@@ -74,7 +74,7 @@ class VulFlask(object):
             time.sleep(20)
             print('[+] ' + driver.current_url)
             try:
-                driver.get('http://35.92.111.14:5000')
+                driver.get(sys.argv[1])
                 driver.implicitly_wait(20)
                 time.sleep(5)
                 driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[1]/input").clear()
@@ -93,10 +93,10 @@ class VulFlask(object):
                 driver.implicitly_wait(20)
                 time.sleep(5)
                 print("Login successfull")
-                driver.get("http://35.92.111.14:5000/home")
+                driver.get("{0}/home".format(sys.argv[1]))
                 driver.implicitly_wait(20)
                 time.sleep(5)
-                driver.get("http://35.92.111.14:5000/customer")
+                driver.get("{0}/customer".format(sys.argv[1]))
                 driver.implicitly_wait(20)
                 time.sleep(5)
             except BaseException as e:
@@ -108,14 +108,14 @@ class VulFlask(object):
 
 def context_zap_results():
     try:
-        context_id = zap_handler.zap_define_context("VulFlask_context","http://35.92.111.14:5000")
+        context_id = zap_handler.zap_define_context("VulFlask_context",sys.argv[1])
     except Exception as e:
         print(e)
 
 def run_zap_active_scan():
     try:
         s = RoboZapImportScanPolicy('127.0.0.1:8090','8090')
-        scanId = zap_handler.zap_start_ascan(context_id,'http://35.92.111.14:5000','Default Policy')
+        scanId = zap_handler.zap_start_ascan(context_id,sys.argv[1],'Default Policy')
         print('Start Active scan. Scan ID equals ' + scanId)
         while (int(s.get_scan_status(scanId)) < 100):
             print('Active Scan progress: ' + s.get_scan_status(scanId) + '%')
