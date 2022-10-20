@@ -1,6 +1,13 @@
 provider "aws" {
     region = "us-west-2"
 }
+
+resource "random_string" "random_name" {
+  length  = 10
+  special = false
+  upper   = false
+}
+
 resource "aws_ecr_repository" "newrepo" {
   name                 = "ase_repo-${random_string.random_name.result}"
   image_tag_mutability = "MUTABLE"
@@ -15,4 +22,11 @@ depends_on = [
  provisioner "local-exec" {
     command = "/bin/bash script.sh"
   }
+}
+
+output "ecrreponame" {
+  value = aws_ecr_repository.newrepo.name
+}
+output "ecrrepourl" {
+   value = aws_ecr_repository.newrepo.repository_url
 }
