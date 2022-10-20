@@ -31,6 +31,9 @@ output "ecrrepourl" {
    value = aws_ecr_repository.newrepo.repository_url
 }
 
+data "aws_caller_identity" "current" {
+}
+
 output "password" {
   value = "${data.aws_caller_identity.current.account_id}.dkr.ecr.us-west-2.amazonaws.com"
 }
