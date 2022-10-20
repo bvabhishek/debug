@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+       - "pwd && ls"
+       - "mkdir /zap_results"
+       - "python -u VulFlask.py http://<server-ip>:5000"
+       - "python3 -u import_findings_security_hub.py"
+       - "pwd && ls"
+       - 'data=$(cat /zap_results/zap_aws_sechub_data.json)'
+       - 'echo $data'
+       - 'aws securityhub batch-import-findings --findings "$data"'
