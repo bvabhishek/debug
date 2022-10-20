@@ -27,10 +27,6 @@ RUN cd /ZAP_2.7.0/plugin && wget https://github.com/zaproxy/zap-extensions/relea
 RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
 RUN tar -xvzf geckodriver-v0.26.0-linux64.tar.gz
 RUN cp geckodriver /usr/local/bin
-RUN mkdir firefox_binary
-RUN wget http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/66.0/linux-x86_64/en-US/firefox-66.0.tar.bz2
-RUN tar xvjf firefox-66.0.tar.bz2
-RUN mv firefox firefox_binary/
 
 COPY /requirements.txt requirements.txt
 RUN pip install --upgrade pip
