@@ -74,7 +74,7 @@ class VulFlask(object):
             time.sleep(20)
             print('[+] ' + driver.current_url)
             try:
-                driver.get(sys.argv[1])
+                driver.get("{0}/home".format(sys.argv[1]))
                 driver.implicitly_wait(20)
                 time.sleep(5)
                 driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[1]/input").clear()
