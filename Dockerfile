@@ -7,7 +7,7 @@ RUN apt-get install -y wget curl build-essential python3-dev  python2.7-dev libs
 	libxml2-dev libxslt1-dev python-pip python3-software-properties software-properties-common libsasl2-dev \
 	python-dev libldap2-dev libfreetype6 libfontconfig1-dev libfontconfig1 xvfb python2.7 libsqlite3-dev \
 	vim libyaml-dev openssh-server git python-lxml libnss3-tools xdot python-gtk2 \
-	python-gtksourceview2 ubuntu-artwork dmz-cursor-theme ca-certificates openjdk-8-jre
+	python-gtksourceview2 ubuntu-artwork dmz-cursor-theme ca-certificates openjdk-8-jre zip unzip
 
 
 RUN wget -q https://bootstrap.pypa.io/pip/2.7/get-pip.py && python2 get-pip.py && rm get-pip.py
@@ -33,3 +33,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 COPY /RoboZapImportScanPolicy.py RoboZapImportScanPolicy.py
 CMD python RoboZapImportScanPolicy.py
+
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+RUN unzip awscli-bundle.zip
+RUN ./awscli-bundle/install -b ~/bin/aws
