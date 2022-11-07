@@ -59,6 +59,9 @@ email = "ase@appsecengineer.com"
 password = "Test@1234"
 remarks = "best way to learn infosec"
 
+customername = "appsecengineer"
+url = "https://appsecengineer.com"
+
 class VulFlask(object):
     def __init__(self, proxy_host = 'localhost', proxy_port = '8090', target = sys.argv[1]):
         self.proxy_host = proxy_host
@@ -141,9 +144,30 @@ class VulFlask(object):
                 driver.get("{0}/home".format(sys.argv[1]))
                 driver.implicitly_wait(20)
                 time.sleep(5)
+                
+                #CreateCustomer
                 driver.get("{0}/customer".format(sys.argv[1]))
                 driver.implicitly_wait(20)
                 time.sleep(5)
+                
+                driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/form/input[1]").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/form/input[1]").send_keys(customername)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/form/input[2]").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/form/input[2]").send_keys(url)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                #createcustomerbutton
+                driver.find_element_by_xpath("/html/body/div[3]/div[2]/div/form/input[3]").click()
+                driver.implicitly_wait(20)
+                time.sleep(5)
+                
+                print("Customer Added Successfull")
             except BaseException as e:
                 print(e)
                 pass
