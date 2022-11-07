@@ -53,8 +53,11 @@ def get_driver():
     driver.implicitly_wait(120)
     return driver
 
-email = "abhishek@email.com"
+firstname = "appsecengineer"
+lastname = "ase"
+email = "ase@appsecengineer.com"
 password = "Test@1234"
+remarks = "best way to learn infosec"
 
 class VulFlask(object):
     def __init__(self, proxy_host = 'localhost', proxy_port = '8090', target = sys.argv[1]):
@@ -74,7 +77,49 @@ class VulFlask(object):
             time.sleep(20)
             print('[+] ' + driver.current_url)
             try:
-                driver.get("{0}/home".format(sys.argv[1]))
+                #Signup Begins
+                driver.get("{0}/signup".format(sys.argv[1]))
+                driver.implicitly_wait(20)
+                time.sleep(5)
+                
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[1]/input").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[1]/input").send_keys(firstname)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[2]/input").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[2]/input").send_keys(lastname)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[3]/input").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[3]/input").send_keys(email)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[4]/input").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[4]/input").send_keys(password)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[5]/input").clear()
+                driver.implicitly_wait(20)
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[5]/input").send_keys(remarks)
+                driver.implicitly_wait(20)
+                time.sleep(3)
+                
+                #loginbutton
+                driver.find_element_by_xpath("/html/body/div/div/div/div/form/input").click()
+                driver.implicitly_wait(20)
+                time.sleep(5)
+                print("Signup Successfull")
+                
+                #Login Begins
+                driver.get("{0}".format(sys.argv[1]))
                 driver.implicitly_wait(20)
                 time.sleep(5)
                 driver.find_element_by_xpath("/html/body/div/div/div/div/form/div[1]/input").clear()
