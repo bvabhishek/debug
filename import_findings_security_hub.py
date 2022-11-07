@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import codecs
 
 FINDING_TITLE = "CodeAnalysis"
-account_id = os.environ.get("aws_account_id")
+account_id = os.environ.get("awsaccountid")
 region = "us-west-2"
 source_repository = "ASE-ZAP-Security-Hub"
 source_branch = "main"
