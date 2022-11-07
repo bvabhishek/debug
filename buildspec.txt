@@ -6,7 +6,7 @@ phases:
        - "pwd && ls"
        - "mkdir /zap_results"
        - "python -u VulFlask.py http://35.87.90.74:5000/"
-       - "export aws_account_id=$(aws sts get-caller-identity --query "Account" --output text)"
+       - "export awsaccountid=$(aws sts get-caller-identity --query "Account" --output text)"
        - "python3 -u import_findings_security_hub.py"
        - "pwd && ls"
        - 'data=$(cat /zap_results/zap_aws_sechub_data.json)'
