@@ -112,7 +112,7 @@ class VulFlask(object):
                 driver.implicitly_wait(20)
                 time.sleep(3)
                 
-                #loginbutton
+                #signupbutton
                 driver.find_element_by_xpath("/html/body/div/div/div/div/form/input").click()
                 driver.implicitly_wait(20)
                 time.sleep(5)
